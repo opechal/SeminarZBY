@@ -19,14 +19,18 @@ char ito(int ind){
 }
 
 int go(int v, int fuel){
+	bool end = true;
 	for(int i=0;i<30;i++){
 		if(g[v][i].first != -1 && g[v][i].first <= fuel && g[v][i].second == 0){ //exists, have fuel, not visited
+			end = false;
 			g[v][i].second = g[i][v].second = 1;
 			go(i, fuel-g[v][i].first);
 			g[v][i].second = g[i][v].second = 0;
 		}
 	}
-	cout << "->"<<ito(v) << endl;
+	if(end){
+		//vytiskni celou cestu
+	}//cout << "->"<<ito(v) << endl;
 }
 			
 int main(){
